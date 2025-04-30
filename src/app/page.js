@@ -14,12 +14,57 @@ const FormPage = () => {
   const nextHandler = () => setStep((prev) => prev + 1);
   const backHandler = () => setStep((prev) => prev - 1);
 
+  const [formOne, setFormOne] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+  });
+
+  const [aldaa, setAldaa] = useState({});
+
+  const valueChanger = (e) => {
+    const { name, value } = e.target;
+    if (value.trim() !== "") {
+      setAldaa((prev) => ({ ...prev, [name]: "" }));
+    }
+    setFormOne((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [userName, setUserName] = useState("");
+
+  // const valueChanger = (event) => {
+  //   if (event.target.name === "firstName") {
+  //     setFormOne((prev) => {
+  //       return { ...prev, firstName: event.target.value };
+  //     });
+  //   } else if (event.target.name === "lastName") {
+  //     setFormOne((prev) => {
+  //       return { ...prev, lastName: event.target.value };
+  //     });
+  //   } else if (event.target.name === "userName") {
+  //     setFormOne((prev) => {
+  //       return { ...prev, userName: event.target.value };
+  //     });
+  //   }
+  // };
+
+  // console.log(formOne, "formOne");
+
   return (
     <div className="flex w-screen h-screen justify-center items-center bg-[#F4F4F4]">
       <Stepper
         nextHandler={nextHandler}
         backHandler={backHandler}
+        valueChanger={valueChanger}
         step={step + 1}
+        formOne={formOne}
+        aldaa={aldaa}
+        setAldaa={setAldaa}
       />
     </div>
   );

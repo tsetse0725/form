@@ -5,7 +5,28 @@ import { motion } from "framer-motion";
 import { Input } from "./input";
 import { Button } from "./Button";
 
-export const FormOne = ({ nextHandler, step }) => {
+export const FormOne = ({
+  nextHandler,
+  step,
+  valueChanger,
+  formOne,
+  aldaa,
+  setAldaa,
+}) => {
+  const handleClick = () => {
+    const newAldaa = {};
+    if (!formOne.firstName.trim())
+      newAldaa.firstName = "first name is required";
+    if (!formOne.lastName.trim()) newAldaa.lastName = "Last name is required";
+    if (!formOne.userName.trim()) newAldaa.userName = "User name is required";
+
+    if (Object.keys(newAldaa).length > 0) {
+      setAldaa(newAldaa);
+    } else {
+      nextHandler();
+    }
+  };
+
   return (
     <motion.div>
       <div className="flex flex-col justify-between rounded-md bg-white p-8 h-[655px] w-[480px]">
@@ -15,24 +36,35 @@ export const FormOne = ({ nextHandler, step }) => {
             label={"First name"}
             placeholder={"Your first name"}
             type="text"
-            onChange={(e) => console.log(e.target.value)}
+            name={"firstName"}
+            onChange={valueChanger}
+            value={formOne.firstName}
+            aldaa={aldaa.firstName}
           />
           <Input
             label={"Last name"}
             placeholder={"Your Last name"}
             type="text"
+            name={"lastName"}
+            onChange={valueChanger}
+            value={formOne.lastName}
+            aldaa={aldaa.lastName}
           />
           <Input
             label={"User name"}
             placeholder={"Your username"}
             type="text"
+            onChange={valueChanger}
+            name={"userName"}
+            value={formOne.userName}
+            aldaa={aldaa.userName}
           />
         </div>
         <Button
           text={`Continue ${step}/3`}
           type={"next"}
           bgColor="bg-black"
-          clickHandler={nextHandler}
+          clickHandler={handleClick}
         />
       </div>
     </motion.div>
