@@ -15,6 +15,7 @@ export const FormOne = ({ nextHandler, step }) => {
             label={"First name"}
             placeholder={"Your first name"}
             type="text"
+            onChange={(e) => console.log(e.target.value)}
           />
           <Input
             label={"Last name"}

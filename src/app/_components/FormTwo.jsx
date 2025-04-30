@@ -29,7 +29,7 @@ export const FormTwo = ({ nextHandler, backHandler, step }) => {
           />
         </div>
         <div className="flex gap-2 items-center justify-center">
-          <div className="flex flex 1/3">
+          <div className="flex flex-1/3">
             <Button
               text={"back"}
               type={"prev"}
@@ -37,7 +37,7 @@ export const FormTwo = ({ nextHandler, backHandler, step }) => {
               clickHandler={backHandler}
             />
           </div>
-          <div className="flex flex 2/3">
+          <div className="flex flex-2/3">
             <Button
               text={`Continue ${step}/3`}
               type={"next"}

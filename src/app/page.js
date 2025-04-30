@@ -15,7 +15,7 @@ const FormPage = () => {
   const backHandler = () => setStep((prev) => prev - 1);
 
   return (
-    <div className="flex w-screen h-screen justify-center items-center">
+    <div className="flex w-screen h-screen justify-center items-center bg-[#F4F4F4]">
       <Stepper
         nextHandler={nextHandler}
         backHandler={backHandler}

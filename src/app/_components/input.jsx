@@ -1,4 +1,4 @@
-export const Input = ({ label, placeholder, type }) => {
+export const Input = ({ label, placeholder, type, value, onChange }) => {
   return (
     <div className="flex flex-col gap-2">
       <label className="text-sm font-medium text-gray-700">
@@ -8,6 +8,8 @@ export const Input = ({ label, placeholder, type }) => {
         <input
           type={type}
           placeholder={placeholder}
+          value={value}
+          onChange={onChange}
           className="outline-none w-full h-full"
         />
       </div>
