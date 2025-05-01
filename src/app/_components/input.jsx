@@ -16,7 +16,7 @@ export const Input = ({
         name={name}
         type={type}
         placeholder={placeholder}
-        value={value || ""}
+        value={value}
         onChange={onChange}
         className={`rounded-md border-2 p-2 outline-none w-full ${
           aldaa ? "border-red-500" : "border-[#CBD5E1]"

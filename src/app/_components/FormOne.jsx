@@ -15,10 +15,12 @@ export const FormOne = ({
 }) => {
   const handleClick = () => {
     const newAldaa = {};
-    if (!formOne.firstName.trim())
-      newAldaa.firstName = "first name is required";
-    if (!formOne.lastName.trim()) newAldaa.lastName = "Last name is required";
-    if (!formOne.userName.trim()) newAldaa.userName = "User name is required";
+    if (formOne.firstName.trim().length < 2)
+      newAldaa.firstName = "first name must be at least 2 letters";
+    if (formOne.firstName.trim().length < 2)
+      newAldaa.lastName = "Last name must be at least 2 letters";
+    if (formOne.userName.trim().length < 2)
+      newAldaa.userName = "User name must be at least 2 letters";
 
     if (Object.keys(newAldaa).length > 0) {
       setAldaa(newAldaa);
@@ -49,6 +51,7 @@ export const FormOne = ({
             onChange={valueChanger}
             value={formOne.lastName}
             aldaa={aldaa.lastName}
+            x
           />
           <Input
             label={"User name"}
