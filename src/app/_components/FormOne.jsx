@@ -15,10 +15,19 @@ export const FormOne = ({
 }) => {
   const handleClick = () => {
     const newAldaa = {};
-    if (formOne.firstName.trim().length < 2)
+    const nameRegex = /^[A-Za-zА-Яа-яӨөҮүЁё]+$/;
+
+    if (formOne.firstName.trim().length < 2) {
       newAldaa.firstName = "first name must be at least 2 letters";
-    if (formOne.firstName.trim().length < 2)
+    } else if (!nameRegex.test(formOne.firstName.trim())) {
+      newAldaa.firstName = "Use only Mongolian or Latin letters";
+    }
+
+    if (formOne.firstName.trim().length < 2) {
       newAldaa.lastName = "Last name must be at least 2 letters";
+    } else if (!nameRegex.test(formOne.lastName.trim())) {
+      newAldaa.lastName = "Use only Mongolian or Latin letters";
+    }
     if (formOne.userName.trim().length < 2)
       newAldaa.userName = "User name must be at least 2 letters";
 
@@ -30,7 +39,12 @@ export const FormOne = ({
   };
 
   return (
-    <motion.div>
+    <motion.div
+      initial={{ opacity: 0, X: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, X: -150 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+    >
       <div className="flex flex-col justify-between rounded-md bg-white p-8 h-[655px] w-[480px]">
         <Header />
         <div className="flex flex-col gap-2 mb-20">

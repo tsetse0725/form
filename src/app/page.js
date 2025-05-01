@@ -5,6 +5,7 @@ import { FormOne } from "./_components/FormOne";
 import { FormTwo } from "./_components/FormTwo";
 import { FormThree } from "./_components/FormThree";
 import { Success } from "./_components/Success";
+import { AnimatePresence } from "framer-motion";
 
 const FormPage = () => {
   const components = [FormOne, FormTwo, FormThree, Success];
@@ -57,15 +58,18 @@ const FormPage = () => {
 
   return (
     <div className="flex w-screen h-screen justify-center items-center bg-[#F4F4F4]">
-      <Stepper
-        nextHandler={nextHandler}
-        backHandler={backHandler}
-        valueChanger={valueChanger}
-        step={step + 1}
-        formOne={formOne}
-        aldaa={aldaa}
-        setAldaa={setAldaa}
-      />
+      <AnimatePresence mode="wait">
+        <Stepper
+          key={step}
+          nextHandler={nextHandler}
+          backHandler={backHandler}
+          valueChanger={valueChanger}
+          step={step + 1}
+          formOne={formOne}
+          aldaa={aldaa}
+          setAldaa={setAldaa}
+        />
+      </AnimatePresence>
     </div>
   );
 };
