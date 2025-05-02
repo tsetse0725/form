@@ -15,21 +15,47 @@ export const FormThree = ({ backHandler, nextHandler, step }) => {
 
   const [aldaa, setAldaa] = useState({});
 
+  const removeImage = () => {
+    setFormThree((prev) => ({
+      ...prev,
+      profileImage: null,
+      previewUrl: "",
+    }));
+  };
+
   const valueChanger = (e) => {
     const { name, value, files } = e.target;
 
-    const newValue = name === "profileImage" ? files[0] : value;
-
-    setFormThree((prev) => ({
-      ...prev,
-      [name]: newValue,
-    }));
-
-    if (newValue) {
-      setAldaa((prev) => ({
+    if (name === "profileImage") {
+      const file = files[0];
+      if (file && file.type.startsWith("image/")) {
+        const preview = URL.createObjectURL(file);
+        setFormThree((prev) => ({
+          ...prev,
+          profileImage: file,
+          previewUrl: preview,
+        }));
+        setAldaa((prev) => ({ ...prev, profileImage: "" }));
+      } else {
+        setFormThree((prev) => ({
+          ...prev,
+          profileImage: null,
+          previewUrl: "",
+        }));
+        setAldaa((prev) => ({
+          ...prev,
+          profileImage: "Зөвхөн зургийн файл оруулна уу",
+        }));
+      }
+    } else {
+      setFormThree((prev) => ({
         ...prev,
-        [name]: "",
+        [name]: value,
       }));
+
+      if (value.trim() !== "") {
+        setAldaa((prev) => ({ ...prev, [name]: "" }));
+      }
     }
   };
 
@@ -93,6 +119,9 @@ export const FormThree = ({ backHandler, nextHandler, step }) => {
               name="profileImage"
               onChange={valueChanger}
               aldaa={aldaa.profileImage}
+              previewUrl={formThree.previewUrl}
+              formThree={formThree}
+              setFormThree={setFormThree}
             />
           </div>
         </div>

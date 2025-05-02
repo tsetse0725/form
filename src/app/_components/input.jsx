@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export const Input = ({
   label,
   placeholder,
@@ -8,18 +6,10 @@ export const Input = ({
   onChange,
   name,
   aldaa,
+  previewUrl,
+  formThree,
+  setFormThree,
 }) => {
-  const [previewUrl, setPreviewUrl] = useState(null);
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      const url = URL.createObjectURL(file);
-      setPreviewUrl(url);
-    }
-    onChange(e);
-  };
-
   return (
     <div className="flex flex-col gap-2">
       <label className="text-sm font-medium text-gray-700">
@@ -28,29 +18,47 @@ export const Input = ({
 
       {type === "file" ? (
         <>
-          <input
-            type="file"
-            id={name}
-            name={name}
-            className="hidden"
-            onChange={handleFileChange}
-          />
-          <label
-            htmlFor={name}
-            className={`h-[180px] w-full flex justify-center items-center bg-gray-100 border-2 border-dashed rounded-md cursor-pointer ${
-              aldaa ? "border-red-500" : "border-gray-300"
-            }`}
-          >
-            {previewUrl ? (
+          {!previewUrl ? (
+            <>
+              <input
+                type="file"
+                id={name}
+                name={name}
+                accept="image/*"
+                className="hidden"
+                onChange={onChange}
+              />
+              <label
+                htmlFor={name}
+                className={`h-[180px] w-full flex justify-center items-center bg-gray-100 border-2 border-dashed rounded-md cursor-pointer ${
+                  aldaa ? "border-red-500" : "border-gray-300"
+                }`}
+              >
+                📷 Browse or Drop Image
+              </label>
+            </>
+          ) : (
+            <div className="relative h-[180px] w-full rounded-md overflow-hidden border">
               <img
                 src={previewUrl}
                 alt="Preview"
-                className="h-full w-full object-cover rounded-md"
+                className="object-cover w-full h-full"
               />
-            ) : (
-              <span>📷 Browse or Drop Image</span>
-            )}
-          </label>
+              <button
+                type="button"
+                onClick={() =>
+                  setFormThree((prev) => ({
+                    ...prev,
+                    profileImage: null,
+                    previewUrl: "",
+                  }))
+                }
+                className="absolute top-2 right-2 bg-white text-black text-sm font-bold px-2 py-1 rounded-full shadow"
+              >
+                ✕
+              </button>
+            </div>
+          )}
         </>
       ) : (
         <input
@@ -65,7 +73,7 @@ export const Input = ({
         />
       )}
 
-      {aldaa && <span className="text-red-500 text-sm mt-1">{aldaa}</span>}
+      {aldaa && <span className="text-red-500 text-sm">{aldaa}</span>}
     </div>
   );
 };
