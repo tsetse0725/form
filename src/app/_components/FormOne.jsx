@@ -23,7 +23,7 @@ export const FormOne = ({
       newAldaa.firstName = "Use only Mongolian or Latin letters";
     }
 
-    if (formOne.firstName.trim().length < 2) {
+    if (formOne.lastName.trim().length < 2) {
       newAldaa.lastName = "Last name must be at least 2 letters";
     } else if (!nameRegex.test(formOne.lastName.trim())) {
       newAldaa.lastName = "Use only Mongolian or Latin letters";
@@ -43,7 +43,7 @@ export const FormOne = ({
       initial={{ opacity: 0, X: 100 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, X: -150 }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       <div className="flex flex-col justify-between rounded-md bg-white p-8 h-[655px] w-[480px]">
         <Header />

@@ -10,6 +10,7 @@ export const FormThree = ({ backHandler, nextHandler, step }) => {
   const [formThree, setFormThree] = useState({
     birthDate: "",
     profileImage: null,
+    previewUrl: "",
   });
 
   const [aldaa, setAldaa] = useState({});
@@ -70,7 +71,7 @@ export const FormThree = ({ backHandler, nextHandler, step }) => {
       initial={{ opacity: 0, X: 100 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, X: -150 }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       <div className="flex flex-col rounded-md bg-white p-8 h-[655px] w-[480px] justify-between">
         <div className="flex flex-col gap-8">

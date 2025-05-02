@@ -45,7 +45,7 @@ export const Input = ({
               <img
                 src={previewUrl}
                 alt="Preview"
-                className="h-full w-full object-contain rounded-md"
+                className="h-full w-full object-cover rounded-md"
               />
             ) : (
               <span>📷 Browse or Drop Image</span>

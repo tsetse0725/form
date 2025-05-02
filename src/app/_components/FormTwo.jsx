@@ -73,7 +73,7 @@ export const FormTwo = ({ nextHandler, backHandler, step }) => {
       initial={{ opacity: 0, X: 100 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, X: -150 }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       <div className="flex flex-col justify-between rounded-md bg-white p-8 h-[655px] w-[480px]">
         <Header />
