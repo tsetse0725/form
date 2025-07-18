@@ -34,27 +34,6 @@ const FormPage = () => {
     }));
   };
 
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [userName, setUserName] = useState("");
-
-  // const valueChanger = (event) => {
-  //   if (event.target.name === "firstName") {
-  //     setFormOne((prev) => {
-  //       return { ...prev, firstName: event.target.value };
-  //     });
-  //   } else if (event.target.name === "lastName") {
-  //     setFormOne((prev) => {
-  //       return { ...prev, lastName: event.target.value };
-  //     });
-  //   } else if (event.target.name === "userName") {
-  //     setFormOne((prev) => {
-  //       return { ...prev, userName: event.target.value };
-  //     });
-  //   }
-  // };
-
-  // console.log(formOne, "formOne");
 
   return (
     <div className="flex w-screen h-screen justify-center items-center bg-[#F4F4F4]">

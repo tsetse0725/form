@@ -54,9 +54,7 @@ export const FormTwo = ({ nextHandler, backHandler, step }) => {
       newAldaa.confirmPassword = "Password do not match";
     }
 
-    // if (formTwo.password !== formTwo.confirmPassword) {
-    //   newAldaa.confirmPassword = "Password do not match";
-    // }
+
 
     if (Object.keys(newAldaa).length > 0) {
       setAldaa(newAldaa);
